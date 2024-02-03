@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Inventory Management</title>
+</head>
+
+<body>
+	<h2>Add Product</h2>
+	<form action="/products" method="post">
+
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required><br>
+
+		<label for="price">Price:</label>
+		<input type="number" id="price" name="price" step="0.01" required><br>
+
+		<label for="quantity">Quantity:</label>
+		<input type="number" id="quantity" name="quantity" required><br>
+		
+		<label for="name">CustomerName:</label>
+		<input type="text" id="customername" name="customername" required><br>
+		
+		<label for="name">MobileNo:</label>
+		<input type="text" id="mobileno" name="mobileno" required><br>
+		
+		<label for="name">Date:</label>
+		<input type="date" id="date" name="date" required><br>
+		<button type="submit">Add Product</button>
+	</form>
+	<h2>Product List</h2>
+	<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th>CustomerName</th>
+			<th>MobileNo</th>
+			<th>Date</th>
+			<th>Total Price</th> <!-- Added column for total price -->
+		</tr>
+		<!-- Display products from the backend -->
+		<tr th:each="product : ${products}">
+			<td th:text="${product.id}"></td>
+			<td th:text="${product.name}"></td>
+			<td th:text="${product.price}"></td>
+			<td th:text="${product.quantity}"></td>
+			<td th:text="${product.customername}"></td>
+			<td th:text="${product.mobileno}"></td>
+			<td th:text="${product.date}"></td>
+			<td th:text="${product.totalPrice}"></td> <!-- Display total price -->
+		</tr>
+	</table>
+
+
+</body>
+
+</html>
